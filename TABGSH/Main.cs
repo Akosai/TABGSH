@@ -266,6 +266,8 @@ namespace TABGSH
                         GuIDraw.DrawShadow(new Rect(headW2S.x, (float)Screen.height - headW2S.y, 40, 40), new GUIContent("X"), GUI.skin.GetStyle(""), drawColor, Color.black, Vector2.zero);
                     }
                 }
+                bool shouldIGlow = HackSettings.GetState("ESP_Player_Draw_Glow");
+                player.gameObject.MakeMeGlow(drawColor,shouldIGlow);
             }
         }
 
@@ -301,6 +303,9 @@ namespace TABGSH
                     GuIDraw.Draw2DBox(W2S.x, Screen.height - W2S.y, 20, 20, drawColor);
                 }
                 //GuIDraw.Draw3DBox(pickup.gameObject, drawColor); //Works and doesn't work at the same time
+                
+                bool shouldIGlow = HackSettings.GetState("ESP_Item_Draw_Glow");
+                pickup.gameObject.MakeMeGlow(drawColor,shouldIGlow);
             }
         }
         private void DrawVehicles()
@@ -331,6 +336,8 @@ namespace TABGSH
                 {
                     GuIDraw.Draw2DBox(W2S.x - 70f, Screen.height - W2S.y, 50, 70, drawColor);
                 }
+                bool shouldIGlow = HackSettings.GetState("ESP_Vehicle_Draw_Glow");
+                car.gameObject.MakeMeGlow(drawColor,shouldIGlow);
                 //GuIDraw.Draw3DBox(car.gameObject, drawColor);
             }
         }
