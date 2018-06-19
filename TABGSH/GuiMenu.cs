@@ -45,6 +45,7 @@ namespace TABGSH
             HackSettings.SetState("ESP_Player_Draw_Distance", GUILayout.Toggle(HackSettings.GetState("ESP_Player_Draw_Distance"), "Draw Distance"));
             HackSettings.SetState("ESP_Player_Draw_Health", GUILayout.Toggle(HackSettings.GetState("ESP_Player_Draw_Health"), "Draw Health"));
             HackSettings.SetState("ESP_Player_Draw_Name", GUILayout.Toggle(HackSettings.GetState("ESP_Player_Draw_Name"), "Draw Name"));
+            HackSettings.SetState("ESP_Player_Draw_Glow", GUILayout.Toggle(HackSettings.GetState("ESP_Player_Draw_Glow"), "Draw Glow"));
             HackSettings.SetState("ESP_Player_Draw_2DBox", GUILayout.Toggle(HackSettings.GetState("ESP_Player_Draw_2DBox"), "Draw 2DBox"));
             HackSettings.SetState("ESP_Player_Draw_HeadX", GUILayout.Toggle(HackSettings.GetState("ESP_Player_Draw_HeadX"), "Draw Head Marker"));
             HackSettings.SetState("ESP_Player_Draw_Nearest", GUILayout.Toggle(HackSettings.GetState("ESP_Player_Draw_Nearest"), "Draw Nearest Player"));
@@ -58,6 +59,7 @@ namespace TABGSH
             GUILayout.EndHorizontal();
             HackSettings.SetState("ESP_Item_Draw_Name", GUILayout.Toggle(HackSettings.GetState("ESP_Item_Draw_Name"), "Draw Name"));
             HackSettings.SetState("ESP_Item_Draw_2DBox", GUILayout.Toggle(HackSettings.GetState("ESP_Item_Draw_2DBox"), "Draw 2DBox"));
+            HackSettings.SetState("ESP_Item_Draw_Glow", GUILayout.Toggle(HackSettings.GetState("ESP_Item_Draw_Glow"), "Draw Glow"));
 
             GUILayout.Label("Vehicle Settings");
             HackSettings.SetState("ESP_Vehicle_Draw", GUILayout.Toggle(HackSettings.GetState("ESP_Vehicle_Draw"), "Draw Vehicles"));
@@ -68,6 +70,7 @@ namespace TABGSH
             HackSettings.SetState("ESP_Vehicle_Draw_Name", GUILayout.Toggle(HackSettings.GetState("ESP_Vehicle_Draw_Name"), "Draw Name"));
             HackSettings.SetState("ESP_Vehicle_Draw_Distance", GUILayout.Toggle(HackSettings.GetState("ESP_Vehicle_Draw_Distance"), "Draw Distance"));
             HackSettings.SetState("ESP_Vehicle_Draw_2DBox", GUILayout.Toggle(HackSettings.GetState("ESP_Vehicle_Draw_2DBox"), "Draw 2DBox"));
+            HackSettings.SetState("ESP_Vehicle_Draw_Glow", GUILayout.Toggle(HackSettings.GetState("ESP_Vehicle_Draw_Glow"), "Draw Glow"));
 
             GUILayout.EndVertical();
         }
