@@ -45,7 +45,7 @@ namespace TABGSH
             style = backupStyle;
         }
 
-        public static void Draw3DBox(GameObject target, Color color) //https://www.unknowncheats.me/forum/counterstrike-global-offensive/175021-3d-box-esp.html
+        public static void Draw3DBox(GameObject target, Color color)
         {
             Bounds bounds = new Bounds(Vector3.zero, Vector3.zero);
             MeshRenderer meshrnd = target.GetComponentInChildren<MeshRenderer>();
