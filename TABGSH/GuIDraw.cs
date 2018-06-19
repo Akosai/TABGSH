@@ -1,4 +1,4 @@
-/*Most of these functions are copy and pasted from another sources, so thanks to the original writers for the copied parts*/
+/*Most of these functions are copy and pasted from other sources, so thanks to the original writers for the copied parts*/
 using System;
 using System.Collections.Generic;
 using System.Linq;
