@@ -90,7 +90,20 @@ namespace TABGSH
                 DrawLine(ScreenW2S[2], ScreenW2S[5], color); //FBL - BBL
         }
 
-
+        /*Idea of UC-Skullz313*/
+        public static void MakeMeGlow(this GameObject me,Color color,bool glow)
+        {
+            if (!me)
+                return;
+            HighlightingSystem.Highlighter Glower = me.GetComponent<HighlightingSystem.Highlighter>();
+            if (!Glower)
+                Glower = me.AddComponent<HighlightingSystem.Highlighter>();
+            Glower.ConstantParams(color);
+            if (glow)
+                Glower.ConstantOn();
+            else
+                Glower.ConstantOff();
+        }
         public static Vector3[] GetBoundPosition(Bounds bounds)//Vector3 mins, Vector3 maxs)
         {
             /*
