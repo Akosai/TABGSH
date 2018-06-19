@@ -49,6 +49,7 @@ namespace TABGSH
                 return;
             NetworkManager.GetServerHandler().ClientDoEffect(player.GetId(), MKABDBMIHKD.Tase, duration);
         }
+        /*Untested function*/
         public static void UnTazePlayer(Player player)
         {
             if (!player.IsPlayerValid(false,false))
