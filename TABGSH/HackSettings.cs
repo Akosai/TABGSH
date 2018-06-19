@@ -172,6 +172,7 @@ namespace TABGSH
         {
             SettingsKeyboard[key] = code;
         }
+        /*
         public static T GetValue<T>(string key)
         {
             if (typeof(T) == typeof(string))
@@ -214,6 +215,6 @@ namespace TABGSH
                 SettingsVector3[key] = (Vector3)Convert.ChangeType(value, typeof(Vector3));
             if (typeof(T) == typeof(KeyCode))
                 SettingsKeyboard[key] = (KeyCode)Convert.ChangeType(value, typeof(KeyCode));
-        }
+        }*/
     }
 }
