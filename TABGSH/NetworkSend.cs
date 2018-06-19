@@ -40,6 +40,7 @@ namespace TABGSH
             NetworkManager.GetServerHandler().ClientRequestHeal(31);
         }
 
+        //Doesn't work, just tazes the player constantly, also he doesn't drops his weapon :/
         public static void DropThatWeaponArea()
         {
                 foreach (Player player in PlayerManager.Players)
