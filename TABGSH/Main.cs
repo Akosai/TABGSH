@@ -10,31 +10,9 @@ namespace TABGSH
 {
     public class Main : MonoBehaviour
     {
-        private GameObject GameobjectHolder = null;
-
-        /*private float nextUpdate = 0;
-        private float espNextUpdate = 0;
-        private float espLastUpdate = 0;
-        private const float updateInterval = 1f / 60f;
-        private const float espupdateInterval = 1f / 80f;
-        private bool _showHud = true;*/
-        private bool _F4 = false;
-        private bool _F6 = false;
-        /*private string GUIItemId;
-        private Rect GUIWindowR = new Rect(0, 0, 300, 500);
-        private bool draw_Players = true;
-        private bool draw_Items = false;
-        private float draw_Distance = 500f;
-        private bool redirectBullets = false;
-        private bool showSpawnMenu = false;
-        Rect Spawnmenu = new Rect(500, 500, 500, 600);*/
-
-        /*private static System.IO.StreamWriter TWriter = new System.IO.StreamWriter(@"C:\Users\Edgar\Desktop\SCPH\TWriter\game.log", true);
-        public static void TWriteline(string text)
-        {
-            TWriter.WriteLine(text);
-            TWriter.Flush();
-        }*/
+        private GameObject GameobjectHolder = null; //Gameobject holding our main class
+        private bool _F4 = false; //Used for testing
+        private bool _F6 = false; //Used for testing
 
         public void Load()
         {
@@ -59,12 +37,13 @@ namespace TABGSH
                 CarManager.UpdateCarList();
                 HackSettings.SetFloat("Collect_NextUpdate", Time.time + HackSettings.GetFloat("Collect_UpdateInterval"));
             }
+            
             if (Time.time >= HackSettings.GetFloat("ESP_NextUpdate"))
                 HackSettings.SetFloat("ESP_NextUpdate", Time.time + HackSettings.GetFloat("ESP_UpdateInterval"));
-
+                //Unload Method, ToDo: Remove Assembly when unloading
             if (Input.GetKeyDown(KeyCode.Delete))
                 this.Unload();
-
+                //Only allow input when we are not using the chat
             if (!TABGChat.inChat)
             {
                 if (Input.GetKeyDown(HackSettings.GetKey("KEY_GUI_Menu_Toggle")))
@@ -77,6 +56,7 @@ namespace TABGSH
                     HackSettings.Toggle("ESP_Item_Draw");
                 if (Input.GetKeyDown(KeyCode.F6))
                     HackSettings.Toggle("HACK_SpamHeal");
+                 //Teleport behind nearest Player
                 if (Input.GetKey(KeyCode.Mouse4))
                 {
                     var target = PlayerManager.NearestPlayer;
@@ -89,6 +69,7 @@ namespace TABGSH
                         PlayerManager.GetLocalPlayer().GetComponentInChildren<Torso>().transform.position = aimPos;
                     }
                 }
+                //Teleport to the newest marker
                 if (Input.GetKey(KeyCode.Mouse3))
                 {
                     var marker = FindObjectOfType<Landfall.Network.MarkerHandler>().markers;
@@ -106,12 +87,14 @@ namespace TABGSH
                     }
                     PlayerManager.GetLocalPlayer().GetComponentInChildren<Torso>().transform.position = pos;
                 }
+                //Kill nearest Player
                 if (Input.GetKeyDown(KeyCode.K))
                 {
 
                     KillPlayerButton();
 
                 }
+                //Spawn predefined set of items, some won't spawn
                 if (Input.GetKey(KeyCode.B))
                 {
                     int[] itemsToSpawn = { 50, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 60, 50, 130, 29, 17, 44, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 31, 31, 31 };
@@ -120,11 +103,12 @@ namespace TABGSH
                         ItemManager.AddItem(i);
                     }
                 }
+                //Taze nearest Player for 9999f seconds
                 if (Input.GetKey(KeyCode.T))
                 {
                     GunManager.TazePlayer(PlayerManager.NearestPlayer, true, 9999f);
                 }
-
+                //Speedhack kinda, key-> Middlemousebutton
                 if (Input.GetKey(KeyCode.Mouse2))
                 {
                     PlayerManager.GetLocalPlayer().GetComponent<InputHandler>().inputMovementDirection += Camera.main.transform.forward * 9f;
@@ -136,11 +120,11 @@ namespace TABGSH
                 try
                 {
                     Gun CurrentGun = GunManager.GetCurrentGun();
-                    var CurrentStrength = PlayerManager.GetLocalPlayer().GetComponent<MeleeWeapon>();
+                    /*var CurrentStrength = PlayerManager.GetLocalPlayer().GetComponent<MeleeWeapon>();
                     if (CurrentStrength)
                     {
                         CurrentStrength.damageOnHit = 99999f;
-                    }
+                    }*/
                     if (CurrentGun)
                     {
                         List<Component> ListToDelete = new List<Component>{
@@ -176,6 +160,7 @@ namespace TABGSH
             {
                 NetworkSend.SendHealRequest();
             }
+            
             if (Input.GetKeyDown(KeyCode.F8))
             {
                 SendChat(PlayerManager.GetLocalPlayer().m_torso.transform, PlayerManager.GetName(PlayerManager.GetLocalPlayer()));
@@ -266,8 +251,12 @@ namespace TABGSH
                                 (HackSettings.GetState("ESP_Player_Draw_Distance") ? $"({distanceToObj})" : "") +
                                 (HackSettings.GetState("ESP_Player_Draw_Health") ? $"\n{healthRnd} HP" : "");
                 Vector2 drawSize = GUI.skin.GetStyle(drawText).CalcSize(new GUIContent(drawText));
+                /*
+                    ToDo: Fix 2DBox size
+                */
                 if (HackSettings.GetState("ESP_Player_Draw_2DBox"))
                     GuIDraw.Draw2DBox(W2S.x, (float)Screen.height - W2S.y, 30f, 60f, Color.blue);
+                    
                 GuIDraw.DrawShadow(new Rect(W2S.x - drawSize.x / 2, (float)Screen.height - W2S.y, drawSize.x, drawSize.y), new GUIContent(drawText), GUI.skin.GetStyle(""), drawColor, Color.black, Vector2.zero);
                 if (HackSettings.GetState("ESP_Player_Draw_HeadX"))
                 {
@@ -304,11 +293,14 @@ namespace TABGSH
                 {
                     GuIDraw.DrawShadow(new Rect(W2S.x - drawSize.x / 2, (float)Screen.height - W2S.y, drawSize.x, drawSize.y), new GUIContent(drawText), GUI.skin.GetStyle(""), drawColor, Color.black, Vector2.zero);
                 }
+                /*
+                    ToDo: Fix 2DBox size
+                */
                 if (HackSettings.GetState("ESP_Item_Draw_2DBox"))
                 {
                     GuIDraw.Draw2DBox(W2S.x, Screen.height - W2S.y, 20, 20, drawColor);
                 }
-                //GuIDraw.Draw3DBox(pickup.gameObject, drawColor);
+                //GuIDraw.Draw3DBox(pickup.gameObject, drawColor); //Works and doesn't work at the same time
             }
         }
         private void DrawVehicles()
@@ -332,7 +324,9 @@ namespace TABGSH
                 {
                     GuIDraw.DrawShadow(new Rect(W2S.x - drawSize.x / 2, (float)Screen.height - W2S.y, drawSize.x, drawSize.y), new GUIContent(drawText), GUI.skin.GetStyle(""), drawColor, Color.black, Vector2.zero);
                 }
-
+                /*
+                    ToDo: Fix 2DBox size
+                */
                 if (HackSettings.GetState("ESP_Vehicle_Draw_2DBox"))
                 {
                     GuIDraw.Draw2DBox(W2S.x - 70f, Screen.height - W2S.y, 50, 70, drawColor);
