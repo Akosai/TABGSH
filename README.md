@@ -4,6 +4,9 @@ TABG Extension
 Features:
 Read the source.
 
+Use MonoInjector64 with following parameters:
+--target TotallyAccurateBattlegrounds.exe --dll TABGSH.dll --class CHLoader --method Load --namespace TABGSH
+
 FAQ:
 
 0. How do I start the hack?
