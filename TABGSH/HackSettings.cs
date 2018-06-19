@@ -36,11 +36,12 @@ namespace TABGSH
             {"GUI_Show",true },
             {"GUI_SpawnItems_Show",false },
 
-            {"ESP_Draw",false },
+            {"ESP_Draw",true },
             {"ESP_Player_Draw", false },
             {"ESP_Player_Draw_Distance",true },
             {"ESP_Player_Draw_Health",true },
             {"ESP_Player_Draw_Name",true },
+            {"ESP_Player_Draw_Glow",true },
             {"ESP_Player_Draw_2DBox",false },
             {"ESP_Player_Draw_HeadX",false },
             {"ESP_Player_Draw_Nearest",false },
@@ -49,11 +50,13 @@ namespace TABGSH
             {"ESP_Item_Draw", false },
             {"ESP_Item_Draw_Name",true },
             {"ESP_Item_Draw_2DBox",false },
+            {"ESP_Item_Draw_Glow",false },
 
             {"ESP_Vehicle_Draw", false },
             {"ESP_Vehicle_Draw_Name", false },
             {"ESP_Vehicle_Draw_Distance", false },
             {"ESP_Vehicle_Draw_2DBox", false },
+            {"ESP_Vehicle_Draw_Glow",true },
 
             {"PM_IgnoreTeam",true },
             {"PM_IgnoreMe",true },
