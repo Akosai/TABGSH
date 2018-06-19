@@ -24,5 +24,5 @@ A: A function name changed, just readd the new dlls to the project and try to fi
 5. Why is it lagging when I try the hack in the shooting range?
 A: I don't know
 
-6. Why does my name don't change after I pressed Change Name?
+6. Why doesn't my name change after I pressed Change Name?
 A: You can only change your name in the lobby.
