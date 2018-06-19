@@ -1,4 +1,7 @@
-﻿using System;
+/*
+    Helper to access private properties and fields of a class
+*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
