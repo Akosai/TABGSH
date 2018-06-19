@@ -1,4 +1,7 @@
-﻿using System;
+/*
+    Class used for debugging.
+*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +28,7 @@ namespace TABGSH
             foreach (T entry in list)
             {
                 WriteLine($"{i}: {entry}");
+               i++;
             }
             WriteLine("");
         }
