@@ -164,10 +164,60 @@ namespace TABGSH
             }
             return target;
         }
-        public static void DumpAllPlayers()
+        
+        public enum HitLayers //Thanks to UC-IDontReallyKnow for the layers
         {
-            foreach (Player player in Players)
-                Log.DumpObject(player.gameObject);
+            TransparentFX,
+            Raycast,
+            unk1,
+            Water,
+            UI,
+            unk2,
+            unk3,
+            HideFromSelf,
+            Map,
+            Stickys,
+            Props,
+            Terrain,
+            LocalPlayer,
+            Weapon01,
+            Weapon02,
+            Weapon03,
+            ScreenParticles,
+            Road,
+            Wheel,
+            DontRender,
+            DontCollide,
+            DontCollideWithLocalPlayer,
+            Dropper,
+            DroppedRagdoll,
+            Armor,
+            Helmet,
+            Bullets
+        }
+        
+        public static bool IsVisible(this Player player)
+        {
+            RaycastHit hit;
+
+            Transform playerTransform = PlayerManager.GetLocalPlayer().m_head.transform;
+
+            Vector3 Heading = (player.m_head.transform.position - playerTransform.position);
+            Vector3 rayDirection = Heading / Heading.magnitude;
+            int layermask = ~((1 << (int)HitLayers.LocalPlayer) | 
+                (1 << (int)HitLayers.Weapon01) | 
+                (1 << (int)HitLayers.Weapon02) | 
+                (1 << (int)HitLayers.Weapon03) | 
+                (1 << (int)HitLayers.DontCollide) |
+                (1 << (int)HitLayers.DontCollideWithLocalPlayer));
+            Ray ray = new Ray(playerTransform.position, rayDirection);
+            if (Physics.Raycast(ray, out hit, 9999f,layermask))
+            {
+                if (hit.collider.attachedRigidbody.GetComponent<Head>().transform.root.GetComponent<Player>() == player)
+                    return true;
+            }
+
+            return false;
         }
 
     }
