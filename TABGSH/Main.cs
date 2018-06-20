@@ -108,6 +108,11 @@ namespace TABGSH
                 {
                     GunManager.TazePlayer(PlayerManager.NearestPlayer, true, 9999f);
                 }
+                //Untaze nearest Player
+                if (Input.GetKey(KeyCode.Q))
+                {
+                    GunManager.UnTazePlayer(PlayerManager.NearestPlayer);
+                }
                 //Speedhack kinda, key-> Middlemousebutton
                 if (Input.GetKey(KeyCode.Mouse2))
                 {
