@@ -16,14 +16,14 @@ namespace TABGSH
             var CurrentGun = GunManager.GetCurrentGun();
             if (CurrentGun)
             {
-                //Renderer getRenderer = target.m_head.GetComponentInChildren<Renderer>();
-                //if (getRenderer.isVisible)
-                //{
-                Vector3 headPos = target.m_head.transform.position;
-                Transform gunTransform = CurrentGun.GetGayField<Transform>("LMFIBANOEHH");
-                Vector3 targetPos = headPos;/*+ BulletDrop + movementprediction*/;
-                gunTransform.LookAt(targetPos);
-                //}
+                if (target.IsVisible())
+                {
+                    
+                    Vector3 headPos = target.m_head.transform.position;
+                    Transform gunTransform = CurrentGun.GetGayField<Transform>("LMFIBANOEHH");
+                    Vector3 targetPos = headPos;/*+ BulletDrop + movementprediction*/;
+                    gunTransform.LookAt(targetPos);
+                }
             }
         }
         public static Gun GetCurrentGun(Player player = null)
