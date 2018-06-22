@@ -29,3 +29,6 @@ A: I don't know
 
 6. Why doesn't my name change after I pressed Change Name?
 A: You can only change your name in the lobby.
+
+7. Why can't I drop/throw spawned Items/Grenades?
+A: Spawned items are spawned clientside only and are not synced online, if you find a way to spawn items, make a pull request or inform me at UC, thanks.
